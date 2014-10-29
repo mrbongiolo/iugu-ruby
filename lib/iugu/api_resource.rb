@@ -18,7 +18,11 @@ module Iugu
       Iugu.base_uri + object_base_uri
     end
 
+<<<<<<< HEAD
     def self.relative_url(options = '')
+=======
+    def self.relative_url(options = "")
+>>>>>>> 70f48c4... created account class and modified api_request to accept requests with authorization token
       if options.is_a?(Hash)
         id = options[:id] || options['id']
       elsif options.is_a?(Iugu::APIResource)
@@ -30,9 +34,15 @@ module Iugu
     end
 
     def self.object_base_uri
+<<<<<<< HEAD
       pluralized_models = %w(customer payment_method invoice subscription plan)
       if pluralized_models.include? object_type
         object_type = self.object_type + 's'
+=======
+      pluralized_models = ["account", "customer", "payment_method", "invoice", "subscription", "plan"]
+      if pluralized_models.include? self.object_type
+        object_type = self.object_type + "s"
+>>>>>>> 70f48c4... created account class and modified api_request to accept requests with authorization token
       else
         object_type = self.object_type
       end
