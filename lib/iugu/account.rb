@@ -2,7 +2,6 @@ module Iugu
   class Account < APIResource
 
     # POST /marketplace/create_account
-<<<<<<< HEAD
     #
     # Creates a account
     #
@@ -10,13 +9,7 @@ module Iugu
     # @option attributes [String] :name The name of an account
     # @option attributes [Integer] :commission_percent The commission_percent
     #   of an account
-
-
     def self.create(attributes)
-=======
-
-    def self.create attributes
->>>>>>> 70f48c4... created account class and modified api_request to accept requests with authorization token
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
@@ -28,7 +21,6 @@ module Iugu
     end
 
     # POST /accounts/:account_id/request_verification
-<<<<<<< HEAD
     #
     # Verify a account
     #
@@ -78,13 +70,7 @@ module Iugu
     #   activity of the company
     # @param [String] account_id the account_id of an account
     # @param [String] user_token the user_token of an account
-
-
     def self.verify(attributes, account_id, user_token)
-=======
-
-    def self.verify attributes, account_id, user_token
->>>>>>> 70f48c4... created account class and modified api_request to accept requests with authorization token
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
@@ -97,18 +83,12 @@ module Iugu
     end
 
     # GET /accounts/:account_id
-<<<<<<< HEAD
     #
     # Fetches an account
     #
     # @param [String] account_id the account_id of an account
     # @param [String] user_token the user_token of an account
-
     def self.fetch(account_id, user_token)
-=======
-
-    def self.search account_id, user_token
->>>>>>> 70f48c4... created account class and modified api_request to accept requests with authorization token
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
@@ -120,22 +100,14 @@ module Iugu
       )
     end
 
-<<<<<<< HEAD
     # Configures a account
     # POST /accounts/configuration
-
-    def self.configuration(attributes)
-=======
-    # POST /accounts/configuration
-
-    def self.configuration attributes, api_token
->>>>>>> 70f48c4... created account class and modified api_request to accept requests with authorization token
+    def self.configuration(attributes, api_token)
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
           "POST",
           "#{url}/configuration",
-<<<<<<< HEAD
           attributes
         )
       )
@@ -155,17 +127,11 @@ module Iugu
         APIRequest.request(
           "POST",
           "#{Iugu.base_uri}transfers",
-          attributes
-=======
           attributes,
           api_token
->>>>>>> 70f48c4... created account class and modified api_request to accept requests with authorization token
         )
       )
     end
-
-<<<<<<< HEAD
-
 
     # POST /accounts/:account_id/request_withdraw
     #
@@ -176,13 +142,7 @@ module Iugu
     #   withdrawal
     # @param [String] account_id the account_id of an account
     # @param [String] user_token the user_token of an account
-
     def self.withdraw(attributes, account_id, user_token)
-=======
-    # POST /accounts/:account_id/request_withdraw
-
-    def self.withdraw attributes, account_id, user_token
->>>>>>> 70f48c4... created account class and modified api_request to accept requests with authorization token
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
@@ -193,8 +153,6 @@ module Iugu
         )
       )
     end
-<<<<<<< HEAD
-
 
     # POST /bank_verification
     #
@@ -254,7 +212,5 @@ module Iugu
         )
       )
     end
-=======
->>>>>>> 70f48c4... created account class and modified api_request to accept requests with authorization token
   end
 end
