@@ -88,6 +88,7 @@ module Iugu
     #
     # @param [String] account_id the account_id of an account
     # @param [String] user_token the user_token of an account
+
     def self.fetch(account_id, user_token)
       Iugu::Factory.create_from_response(
         object_type,
@@ -102,7 +103,7 @@ module Iugu
 
     # Configures a account
     # POST /accounts/configuration
-    def self.configuration(attributes, api_token)
+    def self.configuration(attributes)
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
