@@ -1,57 +1,34 @@
-# Iugu
+# Iugu Ruby [![Code Climate](https://codeclimate.com/github/jnettome/iugu-ruby/badges/gpa.svg)](https://codeclimate.com/github/jnettome/iugu-ruby) [![Build Status](https://travis-ci.org/jnettome/iugu-ruby.svg)](https://travis-ci.org/jnettome/iugu-ruby)
 
-Gem para acesso a API da Iugu
+Ruby gem that provides access to [Iugu - Brazilian Payment Gateway](https://iugu.com)
 
-## Instalação
+## Documentation
 
-Adicione essa linha ao Gemfile de sua aplicação:
+[API Docs](https://iugu.com/referencias/api)
+[Usage samples](https://github.com/jnettome/iugu-ruby/tree/master/doc)
 
-    gem 'iugu'
+## Installation
 
-Depois execute:
+Using bundler, add the iugu gem to your gemfile
 
-    $ bundle
+    gem 'iugu', github: 'jnettome/iugu-ruby'
 
-Ou instale você mesmo com:
+Or to simply use the iugu ruby binders, fetch on rubygems like
 
-    $ gem install iugu
+    gem install iugu
 
-## Exemplos de Uso
 
-~~~
-# Configure seu api key
-Iugu.api_key = SEU_TOKEN_DE_API
+### Requirements
 
-# Exemplo de cobrança direta de CC em Ruby
-Iugu::Charge.create(
-      {
-        "token"=> "TOKEN DO IUGU.JS ou LIB",
-        "email"=>"endereço do email do cliente",
-        "months"=>"quantidade de parcelas",
-        "items" => 
-        [
-          {
-            "description"=>"Item Teste",
-            "quantity"=>"1",
-            "price_cents"=>"1000"
-          }
-        ]
-      }
-)
+  - Ruby 1.8.7 or above
+  - `rest-client` gem
 
-# Exemplo de Gestão de Assinaturas em meia dúzia de linhas. Com direito a pagamento recorrente via Cartão ou Boleto. No caso de Cartão, recomenda-se vincular um token ao customer (Default Payment Method).
-customer = Iugu::Customer.create({
-      "email"=>"EMAIL DO CLIENTE",
-      "name"=>"NOME DO CLIENTE"
-})
+### Development
 
-subscription = Iugu::Subscription.create({
-"plan_identifier" => "basic_plan", "customer_id" => customer.id
-})
+To run all tests
 
-# Exemplo de Downgrade/Upgrade de Conta (Com cálculo automático de diferença de valores entre planos, créditos, etc)
-subscription.change_plan( "novo_plano" );
+    bundle exec rake
 
-# Histórico de Pagamentos do Cliente
-customer.invoices
-~~~
+To run a single test
+
+    bundle exec ruby test/lib/iugu/customer_test.rb
