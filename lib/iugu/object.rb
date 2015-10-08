@@ -2,7 +2,6 @@ require 'set'
 
 module Iugu
   class Object
-
     attr_accessor :errors
 
     undef :id if method_defined?(:id)
@@ -14,10 +13,10 @@ module Iugu
 
     def add_accessor(name)
       singleton_class.class_eval do
-        define_method(name.to_s) { self.attributes[name.to_s] }
-        define_method(name.to_s + "=") do |value|
-          self.attributes[name.to_s] = value
-          self.unsaved_attributes.add name.to_s
+        define_method(name.to_s) { attributes[name.to_s] }
+        define_method(name.to_s + '=') do |value|
+          attributes[name.to_s] = value
+          unsaved_attributes.add name.to_s
         end unless name.to_s == 'id'
       end
     end
@@ -26,16 +25,12 @@ module Iugu
       return super unless name.to_s.end_with? '='
       return super if name.to_s.start_with? 'id'
       add_accessor(name.to_s[0...-1])
-      return send(name, args[0])
+      send(name, args[0])
     end
 
-    def unsaved_attributes
-      @unsaved_attributes
-    end
+    attr_reader :unsaved_attributes
 
-    def attributes
-      @attributes
-    end
+    attr_reader :attributes
 
     def modified_attributes
       Iugu::Utils.intersect @unsaved_attributes, @attributes
@@ -49,7 +44,7 @@ module Iugu
 
     def set_attributes(attributes, unsaved = false)
       @attributes = Iugu::Utils.stringify_keys(attributes)
-      @attributes.each do |k, v|
+      @attributes.each do |k, _v|
         add_accessor(k)
       end
       @unsaved_attributes = @attributes.keys.to_set if unsaved
@@ -60,6 +55,5 @@ module Iugu
     def metaclass
       class << self; self; end
     end
-
   end
 end

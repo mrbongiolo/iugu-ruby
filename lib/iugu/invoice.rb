@@ -6,12 +6,12 @@ module Iugu
     include Iugu::APIDelete
 
     def customer
-      return false unless @attributes["customer_id"]
-      Customer.fetch @attributes["customer_id"]
+      return false unless @attributes['customer_id']
+      Customer.fetch @attributes['customer_id']
     end
 
     def cancel
-      copy Iugu::Factory.create_from_response(self.class.object_type, APIRequest.request("PUT", "#{self.class.url(self.id)}/cancel"))
+      copy Iugu::Factory.create_from_response(self.class.object_type, APIRequest.request('PUT', "#{self.class.url(id)}/cancel"))
       self.errors = nil
       true
     rescue Iugu::RequestWithErrors => ex
@@ -20,7 +20,7 @@ module Iugu
     end
 
     def refund
-      copy Iugu::Factory.create_from_response(self.class.object_type, APIRequest.request("POST", "#{self.class.url(self.id)}/refund"))
+      copy Iugu::Factory.create_from_response(self.class.object_type, APIRequest.request('POST', "#{self.class.url(id)}/refund"))
       self.errors = nil
       true
     rescue Iugu::RequestWithErrors => ex

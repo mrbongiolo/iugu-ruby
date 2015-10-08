@@ -14,7 +14,7 @@ module Iugu
       elsif response['items'] && response['totalItems']
         results = []
         response['items'].each do |v|
-          results.push self.create_from_response(object_type, v)
+          results.push create_from_response(object_type, v)
         end
         Iugu::SearchResult.new results, response['totalItems']
       else

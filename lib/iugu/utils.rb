@@ -8,20 +8,20 @@ module Iugu
     def self.intersect(array, another_hash)
       keys_intersection = array & another_hash.keys
       intersection = {}
-      keys_intersection.each {|k| intersection[k] = another_hash[k]}
+      keys_intersection.each { |k| intersection[k] = another_hash[k] }
       intersection
     end
 
     def self.underscore(string)
-      string.gsub(/::/, '/').
-      gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
-      gsub(/([a-z\d])([A-Z])/,'\1_\2').
-      tr("-", "_").
-      downcase
+      string.gsub(/::/, '/')
+        .gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
+        .gsub(/([a-z\d])([A-Z])/, '\1_\2')
+        .tr('-', '_')
+        .downcase
     end
 
     def self.camelize(string)
-      string.to_s.gsub(/\/(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
+      string.to_s.gsub(/\/(.?)/) { "::#{Regexp.last_match(1).upcase}" }.gsub(/(?:^|_)(.)/) { Regexp.last_match(1).upcase }
     end
 
     def self.stringify_keys(hash)
