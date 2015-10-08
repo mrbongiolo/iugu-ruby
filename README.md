@@ -5,6 +5,7 @@ Ruby gem that provides access to [Iugu - Brazilian Payment Gateway](https://iugu
 ## Documentation
 
 [API Docs](https://iugu.com/referencias/api)
+
 [Usage samples](https://github.com/jnettome/iugu-ruby/tree/master/doc)
 
 ## Installation
@@ -22,6 +23,12 @@ Or to simply use the iugu ruby binders, fetch on rubygems like
 
   - Ruby 1.8.7 or above
   - `rest-client` gem
+
+For Ruby versions before 1.9.2, you'll need to add this to your Gemfile:
+
+    if Gem::Version.new(RUBY_VERSION) < Gem::Version.new('1.9.2')
+      gem 'rest-client', '~> 1.6.8'
+    end
 
 ### Development
 
