@@ -8,8 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Iugu::VERSION
   spec.authors       = ['Marcelo Paez Sequeira']
   spec.email         = ['marcelo@iugu.com']
-  spec.summary       = 'Iugu API'
-  spec.homepage      = 'https://iugu.com'
+  spec.summary       = 'Ruby bindings for Iugu API'
+  spec.description   = 'Iugu is a brazilian payment gateway. See https://iugu.com for details.'
+  spec.homepage      = 'https://iugu.com/'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
@@ -17,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'rest-client'
+  spec.add_dependency 'rest-client', '~> 1.4'
 
   spec.add_development_dependency 'bundler', '~> 1.5'
   spec.add_development_dependency 'rake'
