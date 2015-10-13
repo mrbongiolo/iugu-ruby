@@ -1,6 +1,5 @@
 module Iugu
   class Account < APIResource
-
     # POST /marketplace/create_account
     #
     # Creates a account
@@ -13,7 +12,7 @@ module Iugu
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
-          "POST",
+          'POST',
           "#{Iugu.base_uri}marketplace/create_account",
           attributes
         )
@@ -74,7 +73,7 @@ module Iugu
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
-          "POST",
+          'POST',
           "#{url(account_id)}/request_verification",
           attributes,
           user_token
@@ -93,7 +92,7 @@ module Iugu
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
-          "GET",
+          'GET',
           "#{url(account_id)}",
           {},
           user_token
@@ -107,7 +106,7 @@ module Iugu
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
-          "POST",
+          'POST',
           "#{url}/configuration",
           attributes
         )
@@ -126,7 +125,7 @@ module Iugu
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
-          "POST",
+          'POST',
           "#{Iugu.base_uri}transfers",
           attributes,
           api_token
@@ -146,14 +145,12 @@ module Iugu
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
-          "POST",
+          'POST',
           "#{Iugu.base_uri}transfers",
           attributes
         )
       )
     end
-
-
 
     # POST /accounts/:account_id/request_withdraw
     #
@@ -168,7 +165,7 @@ module Iugu
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
-          "POST",
+          'POST',
           "#{url(account_id)}/request_withdraw",
           attributes,
           user_token
@@ -195,7 +192,7 @@ module Iugu
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
-          "POST",
+          'POST',
           "#{Iugu.base_uri}bank_verification",
           attributes
         )
@@ -214,7 +211,7 @@ module Iugu
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
-          "POST",
+          'POST',
           "#{Iugu.base_uri}web_hooks",
           attributes
         )
@@ -229,7 +226,7 @@ module Iugu
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
-          "GET",
+          'GET',
           "#{Iugu.base_uri}web_hooks"
         )
       )
