@@ -102,13 +102,14 @@ module Iugu
 
     # Configures a account
     # POST /accounts/configuration
-    def self.configuration(attributes)
+    def self.configuration(user_token, attributes)
       Iugu::Factory.create_from_response(
         object_type,
         APIRequest.request(
           'POST',
           "#{url}/configuration",
-          attributes
+          attributes,
+          user_token
         )
       )
     end
